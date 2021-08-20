@@ -20,7 +20,7 @@ const ParkingPercentage = () => {
   const { data } = useQuery(
     'park',
     async () => {
-      const response = await axios.get('https://189d2a7665dd.ngrok.io/park');
+      const response = await axios.get('https://taxiparking.herokuapp.com/park');
       return response.data;
     },
     {

@@ -26,7 +26,7 @@ const Consult = ({ isOpen, onClose }) => {
     switch (option) {
       case 'option1':
         response = await axios.get(
-          'https://189d2a7665dd.ngrok.io/searchtaxi/' + taxiId,
+          'https://taxiparking.herokuapp.com/searchtaxi/' + taxiId,
         );
 
         const park = response.data['Taxi park'];
@@ -40,7 +40,7 @@ const Consult = ({ isOpen, onClose }) => {
         break;
       case 'option2':
         response = await axios.get(
-          'https://189d2a7665dd.ngrok.io/searchplace/' + taxiId,
+          'https://taxiparking.herokuapp.com/searchplace/' + taxiId,
         );
 
         const { Park, Taxi } = response.data;
