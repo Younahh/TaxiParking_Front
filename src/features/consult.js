@@ -30,13 +30,23 @@ const Consult = ({ isOpen, onClose }) => {
         );
 
         const park = response.data['Taxi park'];
-        toast({
-          title: 'Affected Taxi',
-          description: `Taxi is in Park (${park})`,
-          status: 'success',
-          duration: 9000,
-          isClosable: true,
-        });
+        if (park == null){
+          toast({
+            title: 'Affected Taxi',
+            description: `Your Taxi is not in the Park`,
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          })
+        }else{
+          toast({
+            title: 'Affected Taxi',
+            description: `Taxi is in Park (${park})`,
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          })
+        }
         break;
       case 'option2':
         response = await axios.get(
@@ -44,14 +54,23 @@ const Consult = ({ isOpen, onClose }) => {
         );
 
         const { Park, Taxi } = response.data;
-
-        toast({
-          title: 'Empty Place',
-          description: `Please park Taxi (${Taxi}) in Park (${Park})`,
-          status: 'success',
-          duration: 9000,
-          isClosable: true,
-        });
+        if (Park == null){
+          toast({
+            title: 'Empty Place',
+            description: `The Park is Full`,
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          });
+        }else {
+          toast({
+            title: 'Empty Place',
+            description: `Please park Taxi (${Taxi}) in Park (${Park})`,
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          });
+        }
         break;
     }
   };
