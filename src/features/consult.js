@@ -24,49 +24,49 @@ const Consult = ({ isOpen, onClose }) => {
     let response = null;
     // eslint-disable-next-line default-case
     switch (option) {
-      case 'option1':
+      case "option1":
         response = await axios.get(
-          'https://taxiparking.herokuapp.com/searchtaxi/' + taxiId,
+          process.env.REACT_APP_API_URL+"/searchtaxi/" + taxiId
         );
 
-        const park = response.data['Taxi park'];
-        if (park == null){
+        const park = response.data["Taxi park"];
+        if (park) {
           toast({
-            title: 'Affected Taxi',
-            description: `Your Taxi is not in the Park`,
-            status: 'success',
-            duration: 9000,
-            isClosable: true,
-          })
-        }else{
-          toast({
-            title: 'Affected Taxi',
+            title: "Affected Taxi",
             description: `Taxi is in Park (${park})`,
-            status: 'success',
-            duration: 9000,
-            isClosable: true,
-          })
-        }
-        break;
-      case 'option2':
-        response = await axios.get(
-          'https://taxiparking.herokuapp.com/searchplace/' + taxiId,
-        );
-
-        const { Park, Taxi } = response.data;
-        if (Park == null){
-          toast({
-            title: 'Empty Place',
-            description: `The Park is Full`,
-            status: 'success',
+            status: "success",
             duration: 9000,
             isClosable: true,
           });
-        }else {
+        } else {
           toast({
-            title: 'Empty Place',
+            title: "Affected Taxi",
+            description: `Your Taxi is not in the Park`,
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          });
+        }
+        break;
+      case "option2":
+        response = await axios.get(
+          process.env.REACT_APP_API_URL+"/searchplace/" + taxiId
+        );
+
+        const { Park, Taxi } = response.data;
+        if (Park) {
+          toast({
+            title: "Empty Place",
             description: `Please park Taxi (${Taxi}) in Park (${Park})`,
-            status: 'success',
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          });
+        } else {
+          toast({
+            title: "Empty Place",
+            description: `The Park is Full`,
+            status: "success",
             duration: 9000,
             isClosable: true,
           });

@@ -13,7 +13,7 @@ const Parking = () => {
   const { data } = useQuery(
     'park',
     async () => {
-      const response = await axios.get('https://taxiparking.herokuapp.com/park');
+      const response = await axios.get(process.env.REACT_APP_API_URL+'/park');
       return response.data;
     },
     {

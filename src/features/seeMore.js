@@ -29,7 +29,7 @@ const SeeMore = ({ isOpen, onClose }) => {
     'km_profit',
     async () => {
       const response = await axios.get(
-        'https://taxiparking.herokuapp.com/km_profit',
+        process.env.REACT_APP_API_URL+'/km_profit',
       );
       return response.data;
     },
@@ -47,7 +47,7 @@ const SeeMore = ({ isOpen, onClose }) => {
     'taxi_activities',
     async () => {
       const response = await axios.get(
-        'https://taxiparking.herokuapp.com/taxi_activities',
+        process.env.REACT_APP_API_URL+'/taxi_activities',
       );
       return response.data;
     },
@@ -65,7 +65,7 @@ const SeeMore = ({ isOpen, onClose }) => {
     'all_km_profit',
     async () => {
       const response = await axios.get(
-        'https://taxiparking.herokuapp.com/all_km_profit',
+        process.env.REACT_APP_API_URL+'/all_km_profit',
       );
       return response.data;
     },
